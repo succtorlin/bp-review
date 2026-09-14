@@ -1,47 +1,196 @@
-# BP Review Skill
+# BP Review · 商业计划书审核 Skill
 
-A Codex skill for reviewing investor-facing business plans and pitch decks. The skill name is `bp-investor-review`.
+**让每一页 BP 都回答一个关键问题，让每一个融资主张都有证据可查。**
 
-## Capabilities
+BP Review 是一个面向创业者、融资顾问和项目评审者的 Codex Skill。把商业计划书、投资亮点或融资预算交给它，即可按结构化流程检查证据缺口、竞争优势与资金逻辑，并形成具体的修改清单。
 
-- **Evidence review:** map each BP module to screening questions, evidence gaps and concrete next actions.
-- **Competitive advantages:** distinguish shared market opportunities from supported, team-specific advantages.
-- **Funding consistency:** connect budgets, business assumptions, cash flows, milestones and adverse scenarios.
+它围绕三个问题展开：**这件事有什么证据？为什么是你们？这笔钱能支持什么目标？**
 
-The executable skill and capability cards are primarily in Chinese, with English trigger phrases.
+[快速开始](#快速开始) · [三项核心能力](#三项核心能力) · [使用示例](#使用示例) · [参与项目](#参与项目)
 
-## Install
+如果你也希望 AI 能把 BP 审核做得更具体、更有依据，欢迎给项目一个 **Star ⭐**，方便以后找到，也让更多创业者发现它。
 
-Clone this repository into your Codex skills directory using the directory name `bp-investor-review`, or copy this repository there. Start a new Codex session after installation.
+## 为什么做这个项目
 
-## Use
+写完一份 BP，往往只是融资准备的开始。
 
-Ask Codex:
+“市场很大”需要进一步解释谁会购买；“团队很强”需要说明经验怎样转化为执行优势；“本轮资金用于增长”需要连接渠道、成本、现金与下一阶段目标。
 
-> Use bp-investor-review to review this pitch deck. Identify the evidence gaps and the three most important improvements.
+这些问题分散在不同页面里，逐页润色时容易遗漏。比如，增长页的付费客户数可能与财务页不一致，融资页的预算可能没有覆盖战略页承诺的研发任务，投资亮点也可能只有竞争者同样适用的行业趋势。
 
-Or:
+BP Review 将这些检查整理成可重复使用的执行步骤。审核结果应说明**哪里存在问题、依据在哪里、缺什么材料、下一步怎么改**，让团队能带着行动清单继续工作。
 
-> 用 bp-investor-review 检查这份融资计划：预算、业务假设、现金跑道和里程碑是否一致？
+## 适合谁
 
-Provide the deck or its text and supporting data. Missing data should produce a fillable review framework, not invented conclusions.
+|使用者|可以用它完成什么|
+|---|---|
+|正在准备融资的创始人|投递前检查 BP，优先修复关键证据与逻辑缺口|
+|负责融资材料的团队成员|对齐产品、增长、财务与融资页面的指标口径|
+|创业顾问与加速器导师|用一致的问题框架给项目提供具体反馈|
+|项目评审者|整理需要进一步核实的主张、假设和问题|
 
-## Repository layout
+当前能力卡主要使用中文，同时包含英文触发语句。使用英文提出审核任务也有对应的意图路由。
 
-- `SKILL.md`: skill entrypoint and capability routing.
-- `references/`: three capability cards, source overview, glossary and quick reference.
-- `source/`: editable Cangjie capability bundle used to compile the skill.
-- `BUILD_MANIFEST.json`: compiler version and generated-file hashes.
-- `evals/`: nine behavioral cases and the independent static review report.
+## 三项核心能力
 
-Edit the source bundle and recompile rather than hand-editing generated files. Using an installed Cangjie v2.5.0 toolchain, compile `source/` in `single` mode into a staging directory, validate it, then replace only the generated files. The compiler itself is an external dependency and is not bundled here.
+### 1. 证据审核：每个模块需要证明什么？
 
-## Validation
+从阅读者需要判断的问题出发，检查现有内容是否给出了足够依据。
 
-The initial compiled skill passed structural validation with zero errors or warnings and nine static behavior checks. These checks are not an empirical host-discovery or multi-model benchmark. The cash-flow example checks that unchanged expenses remain unchanged when conversion drops.
+完整审核覆盖 **13 个模块**：封面、投资亮点、项目介绍、痛点、解决方案、竞争分析、商业模式、增长策略、发展战略、团队、财务预测、风险与融资计划。这是检查范围，可以适应不同页数与项目阶段。
 
-## Source and limits
+输出会区分事实、推断和待验证假设，并按影响判断的程度安排修改优先级。材料不完整时，标明未覆盖的范围。
 
-Distilled with Cangjie from [天使、VC投资：商业计划书筛选的底层逻辑](https://www.bilibili.com/video/BV1yidtBoEeK/), by 棋从断處生. Source audio was automatically transcribed; source citations refer to that transcript version. The full transcript and audio remain in the original delivery and are not included in this repository.
+**示意输出：**
 
-The skill separates source statements from executable adaptations. Teaching examples are not verified investment outcomes, and numerical examples are not universal thresholds. It does not provide investment guarantees, live valuations or legal due diligence.
+|模块|需要回答的问题|发现的缺口|下一步动作|
+|---|---|---|---|
+|痛点|什么用户在什么场景下遇到问题？|只有行业规模，没有具体用户证据|补充访谈方法、样本与观察结果|
+|解决方案|产品验证到了哪一步？|“用户喜欢”缺少行为依据|补充试用、留存或实际付费材料|
+|增长|渠道能否支持目标？|只有渠道名称，没有成本与转化口径|整理分渠道试验和关键假设|
+
+以上为演示内容，并非真实项目的审核结果。
+
+### 2. 投资亮点：把“机会很好”讲成“为什么是我们”
+
+将亮点分成三类：共享市场条件、团队特有优势、待验证假设。
+
+随后检查每个优势的证据、客户价值、复制难度，以及多个优势如何互相加强。大市场、基础模型能力、专利或大厂履历，都需要进一步解释它们怎样帮助这个项目完成具体任务。
+
+例如，两家公司使用同一个基础模型时，审核可以继续追问：
+
+- 是否有可证明的数据使用权、交付经验或客户关系？
+- 这些条件是否已经带来可观察的结果？
+- 竞争者复制它们需要什么时间、成本或条件？
+- 哪些关系已经验证，哪些仍是假设？
+
+如果材料还不足以支持独特优势，输出会保留这个缺口，并给出验证动作。
+
+### 3. 融资一致性：把钱、业务与里程碑接起来
+
+沿着 **资金用途 → 活动 → 业务驱动 → 现金 → 里程碑** 检查融资计划，寻找跨页矛盾与未说明的假设。
+
+审核关注的细节包括：
+
+- 增长与财务页面是否使用相同的客户、转化与价格定义。
+- 收入与实际收款是否区分，计划融资是否被误当成到账现金。
+- 固定费用、一次性支出和随规模变化的成本是否处理一致。
+- 不利情景发生后，月度现金与目标是否仍然成立。
+- 研发与探索预算是否对应明确的验证节点。
+
+**简单演示：**期初现金 100 万元，每月支出 30 万元、收款 10 万元，无其他现金流，三个月末余额为 40 万元。若转化下降使每月收款减至 5 万元，而支出不变，三个月末余额为 25 万元。
+
+这类检查要求压力变化传递到现金结果。能否完成业务里程碑，还需结合目标与业务数据继续判断。
+
+## 快速开始
+
+需要可使用本地 Skills 的 Codex 环境，以及 Git。
+
+将仓库克隆到个人技能目录：
+
+```bash
+git clone https://github.com/succtorlin/bp-review.git ~/.codex/skills/bp-investor-review
+```
+
+如果仓库仍为私有，需要拥有访问权限并完成 GitHub 身份验证。若目标目录已经存在，请先检查已有内容，避免覆盖。
+
+安装后开启新的 Codex 会话，显式指定 `bp-investor-review`，并提供 BP 正文、可读取的文件或相关数据。
+
+```text
+使用 bp-investor-review 审核这份商业计划书。
+请列出关键证据缺口、跨页矛盾，以及最优先的三项修改。
+每条意见注明依据；无法判断的内容请标为待核实。
+```
+
+## 使用示例
+
+### 投递前做一次完整审核
+
+```text
+使用 bp-investor-review 检查下面的 BP。
+项目处于种子轮，目标客户是中小制造企业。
+请按模块输出：筛选问题、已有证据、缺口、下一动作和优先级。
+最后给出最值得先改的三件事。
+
+[粘贴 BP 内容]
+```
+
+### 重新整理投资亮点
+
+```text
+使用 bp-investor-review 帮我检查投资亮点。
+我们和竞品都使用相同的基础模型。
+请区分共享机会、特有优势与待验证假设，
+再根据已有证据改写亮点，并说明还需要补什么材料。
+
+[粘贴亮点、团队事实与竞争材料]
+```
+
+### 检查资金是否支持下一阶段目标
+
+```text
+使用 bp-investor-review 检查融资用途与里程碑。
+先核对数据口径，再建立基准与不利情景。
+请区分收入和收款，不把尚未到账的融资当作现有现金。
+如果缺少必要数据，请列出待填字段。
+
+[提供期初现金、融资时间、月度预算、业务假设与目标]
+```
+
+### English prompt
+
+```text
+Use bp-investor-review to review this pitch deck.
+Identify unsupported claims, differentiation gaps, and inconsistencies
+between the growth plan, cash assumptions, and funding milestones.
+Prioritize the three most important fixes and cite the supplied evidence.
+```
+
+## 提供哪些材料，反馈会更具体？
+
+可以先提供部分内容，让审核从现有材料开始。完整检查通常需要：
+
+|材料|帮助判断什么|
+|---|---|
+|BP 正文或可读取的页面内容|实际写了什么，哪些模块尚未覆盖|
+|项目阶段与目标投资人资料|证据要求及已知的投资偏好是否匹配|
+|用户访谈、订单、留存与渠道数据|需求、方案和增长主张有什么支持|
+|团队事实与竞争材料|优势的真实性、相关性与复制条件|
+|现金、预算、收款时间与业务假设|融资用途、现金变化和里程碑是否一致|
+
+缺少材料时，技能应生成待填框架或条件性分析。它不会把没有数据的部分写成已验证结论。
+
+## 工作方式与边界
+
+仓库包含一个技能入口和三张按需加载的能力卡。每张卡都定义输入、输出、执行步骤、完成条件和适用边界，便于反复使用与检查。
+
+它适合审查商业逻辑和证据。纯视觉排版、实时估值、证券推荐和法律尽调需要其他工具或专业流程。审核意见也不代表投资决定或融资成功保证。
+
+示例数字不作为跨行业统一门槛。早期研发项目可以按技术验证路径审查；尚无成熟获客渠道不等于融资用途不合理。
+
+## 验证情况
+
+初始版本通过结构验证：**0 个错误、0 个警告**；通过 **9 个静态行为检查**，覆盖完整审核、亮点区分、现金计算、数据不足、研发项目和超出范围的请求。
+
+这些是静态检查结果，尚不代表不同模型、真实项目或所有宿主环境中的效果。可查看 [测试用例](evals/test-prompts.json) 和 [评审报告](evals/test-results.md)。
+
+## 仓库结构
+
+```text
+bp-review/
+├── SKILL.md                 # 技能入口与意图路由
+├── references/              # 能力卡、概览、术语与速查
+├── source/                  # 可编辑的能力定义
+├── evals/                   # 行为用例与评审报告
+└── BUILD_MANIFEST.json       # 编译版本与文件校验记录
+```
+
+修改执行逻辑时，请先修改 `source/`，再通过外部 Cangjie v2.5.0 工具链以 `single` 模式编译到暂存目录，验证后替换生成文件。编译工具未包含在本仓库中。背景与出处保留在 `references/`，便于追溯。
+
+## 参与项目
+
+欢迎通过 Issue 提交具体问题：哪些审核意见过于笼统、哪些指标口径容易混淆、哪些项目阶段需要更好的支持。提供经过脱敏的输入、实际输出和期望行为，会更容易复现与改进。
+
+也欢迎提交新的行为测试、能力卡改进与英文文档。
+
+**觉得这个方向有用？给 BP Review 一个 Star ⭐，并分享给正在准备融资材料的朋友。**
