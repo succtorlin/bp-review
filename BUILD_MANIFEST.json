@@ -1,0 +1,33 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "SKILL.md": "c9f4fbe6c0c3941613c9d5441a037140495ae864887aa4514714239b46b3384c",
+    "references/capabilities/funding-consistency.md": "5574b164a6ff78bcc021e3e42f60a03c1dfaae54c06968e48c550998c300814c",
+    "references/capabilities/scarcity-combination.md": "0450576d3c5df3fe117ab252099ba3fe69120c2bde337f6a7c46e988c239fe01",
+    "references/capabilities/screening-evidence.md": "d1820e614bd1236dd056c2f570aeccde17f34d890782e212640a26a5200da506",
+    "references/capability-index.md": "a627543db70e4f025599230afe9ac592ac9705b31c66a0971d5c99bbc3940e30",
+    "references/cheatsheet.md": "26a66bcd70dcd479fccfd59290d0723017f952aba0ee2ca52e457df0df1b084b",
+    "references/glossary.md": "2d1024bbd0fa648cb2cc7b544ffb0e0a1745f4417d1275d948c1ea0f50cb3ae6",
+    "references/overview.md": "4a299c5a6f023b1211324eff73d8b26844748eee45a00a77988a10864b0ae881"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.bp-investor-review",
+  "bundle_sha256": "a2170ac1c76eea10cc71dac84c3a2543e38b2c4a3df489ff075e3bd4f1d43156",
+  "variant": "single",
+  "run_id": "run-20260913-233338-111a3f",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 4,
+    "promoted_count": 3,
+    "capability_count": 3,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 3 个晋级 Skill，共 4 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

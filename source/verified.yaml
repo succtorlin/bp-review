@@ -1,0 +1,136 @@
+schema_version: 1
+bundle_id: bundle.bp-investor-review
+book:
+  title: 天使、VC投资：商业计划书筛选的底层逻辑
+  author: 棋从断處生
+  source_pack: BV1yidtBoEeK
+entry:
+  name: bp-investor-review
+  description: 当用户要审核商业计划书BP、提炼融资亮点、检查融资预算与里程碑或现金跑道时使用。Review investor-facing pitch
+    deck evidence, differentiation and fundraising assumptions. 不用于纯PPT美化、个人投资建议或股票估值。
+  core_principles:
+  - 逐模块写出筛选问题、证据、缺口和优先动作，先消除关键逻辑断点。
+  - 区分共享市场条件与特有优势，验证优势之间如何互相强化及复制难度。
+  - 用同一组业务驱动连接资金用途、月度现金、里程碑和不利情景。
+  - 将事实、推断、假设分开；缺数据不虚构，讲者的数字不是通用阈值。
+  out_of_scope:
+  - 纯视觉排版或PPT制作；下载视频或转写音频。
+  - 个人理财、证券交易、实时估值定价及法律尽调。
+  stop_conditions:
+  - 未提供BP时给待填框架，不宣称已审核；现金数据缺失时不报告确定跑道。
+  - 不编造业绩、基金偏好、竞争优势或融资承诺。
+  - 来源为单段视频的自动转写；案例是教学说明，没有经验证的真实投资结果。
+router_entry:
+  name: bp-investor-review-source
+  description: 当用户要审核商业计划书BP、提炼融资亮点、检查融资预算与里程碑或现金跑道时使用。Review investor-facing pitch
+    deck evidence, differentiation and fundraising assumptions. 不用于纯PPT美化、个人投资建议或股票估值。
+promotion_budget: 4
+capabilities:
+- capability_id: cap.bp-investor-review.screening-evidence
+  revision: 1
+  status: active
+  slug: screening-evidence
+  title: 从筛选问题反推每页证据
+  importance: high
+  importance_rationale: 对应用户确认的三项核心任务之一；验证记录中分别覆盖三个以上源模块。
+  one_liner: 逐模块写出筛选问题、证据、缺口和优先动作，先消除关键逻辑断点。
+  intents:
+  - 审核整份BP的逻辑与证据
+  - review pitch deck evidence
+  - 投资人为什么看不懂项目
+  keywords:
+  - screening-evidence
+  - BP
+  - 从筛选问题反推每页证据
+  also_read: []
+  card: cards/screening-evidence.md
+  frontmatter:
+    description: 审核整份BP的逻辑与证据；逐模块写出筛选问题、证据、缺口和优先动作，先消除关键逻辑断点。
+    tags:
+    - BP
+    - fundraising
+  source_evidence:
+  - source_id: src-bv1yidtboek
+    version_id: asr-1
+    location: transcript.txt L12–22,L119–135
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 有单独的用户意图、输入输出、执行步骤及可构造反例，具备独立资格；用户明确选择single编译，故只发布一个入口，保留为内部卡。相关卡关系写在正文中，避免编译器对also_read标识的歧义。
+- capability_id: cap.bp-investor-review.scarcity-combination
+  revision: 1
+  status: active
+  slug: scarcity-combination
+  title: 把市场机会转成团队特有的稀缺优势组合
+  importance: high
+  importance_rationale: 对应用户确认的三项核心任务之一；验证记录中分别覆盖三个以上源模块。
+  one_liner: 区分共享市场条件与特有优势，验证优势之间如何互相强化及复制难度。
+  intents:
+  - 提炼投资亮点与竞争优势
+  - why us differentiation
+  - 证明团队特有优势
+  keywords:
+  - scarcity-combination
+  - BP
+  - 把市场机会转成团队特有的稀缺优势组合
+  also_read: []
+  card: cards/scarcity-combination.md
+  frontmatter:
+    description: 提炼投资亮点与竞争优势；区分共享市场条件与特有优势，验证优势之间如何互相强化及复制难度。
+    tags:
+    - BP
+    - fundraising
+  source_evidence:
+  - source_id: src-bv1yidtboek
+    version_id: asr-1
+    location: transcript.txt L27–32,L66–78,L111–118
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 有单独的用户意图、输入输出、执行步骤及可构造反例，具备独立资格；用户明确选择single编译，故只发布一个入口，保留为内部卡。相关卡关系写在正文中，避免编译器对also_read标识的歧义。
+- capability_id: cap.bp-investor-review.funding-consistency
+  revision: 1
+  status: active
+  slug: funding-consistency
+  title: 将融资预算闭合到业务驱动、里程碑与压力情景
+  importance: high
+  importance_rationale: 对应用户确认的三项核心任务之一；验证记录中分别覆盖三个以上源模块。
+  one_liner: 用同一组业务驱动连接资金用途、月度现金、里程碑和不利情景。
+  intents:
+  - 检查融资用途与里程碑是否一致
+  - stress test fundraising runway
+  - 检查增长假设与财务预测
+  keywords:
+  - funding-consistency
+  - BP
+  - 将融资预算闭合到业务驱动、里程碑与压力情景
+  also_read: []
+  card: cards/funding-consistency.md
+  frontmatter:
+    description: 检查融资用途与里程碑是否一致；用同一组业务驱动连接资金用途、月度现金、里程碑和不利情景。
+    tags:
+    - BP
+    - fundraising
+  source_evidence:
+  - source_id: src-bv1yidtboek
+    version_id: asr-1
+    location: transcript.txt L95–110,L119–143
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 有单独的用户意图、输入输出、执行步骤及可构造反例，具备独立资格；用户明确选择single编译，故只发布一个入口，保留为内部卡。相关卡关系写在正文中，避免编译器对also_read标识的歧义。
